@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+      
+{% block title %}
+details
+{% endblock %}
+
+{% block content %}
+
+<table class="table-striped">
+    <thead>
+        <tr aria-colspan="2">
+            <th>{{parent.full_name}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Email</td>
+            <td>{{parent.email}}</td>
+        </tr>
+        <tr>
+            <td>Phone one</td>
+            <td>{{parent.phone_1}}</td>
+        </tr>
+        <tr>
+            <td>Phone two</td>
+            <td>{{parent.phone_2}}</td>
+        </tr>
+    </tbody>
+</table>
+ <br>
+ <a href="{% url 'parent_list' %}" class="btn btn-info">Back to parent list</a>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+ 
+
+
+

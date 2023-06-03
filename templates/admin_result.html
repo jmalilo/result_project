@@ -1,0 +1,62 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+   results
+{% endblock %}
+    
+{% block content %}
+{% if user.is_superuser %} 
+        <div class="row mt-2">
+            <div class="col-3">
+                <a href="{% url 'add_result' %}" class="btn btn-success">Create Result</a>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="form form-inline"  method="get">
+                            <input type="text" name="search" placeholder="search student....." class="form-control"><button class="btn btn-info" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    {% if search %}
+            {% for result in res %}
+                <div class="row p-3 mt-1 mr-1 ml-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                    <div class="col-3"><a href="{% url 'res_detail' result.id %}">{{result.stud_name.full_name}}</a></div>
+                    <div class="col-2"><a href="{% url 'edit_result' result.id %}"><i class="fa fa-pencil-square-o ">Edit</i></a></div>
+                    <div class="col-2"><a href="{% url 'delete_result' result.id %}"><i class="fa fa-trash ">Delete</i></a></div>
+                    <div class="col-3 text-left"><a href="{% url 'download_pdf' result.id %}" class="btn btn-warning">Download</a></div>
+                    <div class="col-2">
+                        {% if result.is_new %}
+                        <p>NEW</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+    {% else %}
+            {% for result in results %}
+                <div class="row p-3 mt-1 mr-1 ml-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                    <div class="col-3"><a href="{% url 'res_detail' result.id %}"> {{result.stud_name.full_name}}</a></div>
+                    <div class="col-2"><a href="{% url 'edit_result' result.id %}"><i class="fa fa-pencil-square-o ">Edit</i></a></div>
+                    <div class="col-2"><a href="{% url 'delete_result' result.id %}"><i class="fa fa-trash ">Delete</i></a></div>
+                    <div class="col-3 text-left"><a href="{% url 'download_pdf' result.id %}" class="btn btn-warning">Download</a></div>
+                    
+                    <div class="col-2 text-right">
+                        {% if result.is_new %}
+                        <p>NEW</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+    {% endif %}
+{% endif %}    
+{% endblock %}
+

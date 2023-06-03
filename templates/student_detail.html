@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+      
+{% block title %}
+details
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <hr>
+    <div class="row">
+        <div class="col-4"><b>PARENT NAME</b></div>
+        <div class="col-4"><b>{{student.parent.full_name}}</b></div>
+    </div>
+    <div class="row">
+        <div class="col-4"><b>STUDENT NAME</b></div>
+        <div class="col-4"><b>{{student.full_name}}</b></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-4">CLASS</div>
+        <div class="col-4">{{student.class_level}}</div>
+    </div>
+    
+    <hr>
+</div>
+
+
+ {% if user.is_superuser %}
+    <a href="{% url 'student_list' %}">Go To student list</a>
+ {% endif %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+<

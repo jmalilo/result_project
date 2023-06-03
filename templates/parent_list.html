@@ -1,0 +1,54 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+   Register parent
+{% endblock %}
+    
+{% block content %}
+<div class="container">
+        <div class="row mt-2">
+            <div class="col-3">
+                <a href="{% url 'signup' %}" class="btn btn-success">Register Parent</a>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="form form-inline"  method="get">
+                            <input type="text" name="search" placeholder="search parent....." class="form-control"><button class="btn btn-info" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+
+    {% if search %}
+            {% for parent in res %}
+                <div class="row p-3 mt-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                    <div class="col-6"><a href="{% url 'parent_detail' parent.id %}">{{parent.full_name}}</a></div>
+                    <div class="col-3"><a href="{% url 'edit_parent' parent.id %}"><i class="fa fa-pencil-square-o ">Edit</i></a></div>
+                    <div class="col-3"><a href="{% url 'delete_parent' parent.id %}"><i class="fa fa-trash ">Delete</i></a></div>
+                </div>
+                <br>
+            {% endfor %}
+    {% else %}
+            {% for parent in users %}
+                <div class="row p-3 mt-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                    {% if parent.is_superuser %}
+                    <div class="col-12"><a href="">ADMIN  &nbsp;   {{parent.full_name}}</a></div>
+                    {% else %}
+                    <div class="col-6"><a href="{% url 'parent_detail' parent.id %}">{{parent.full_name}}</a></div>
+                    <div class="col-3"><a href="{% url 'edit_parent' parent.id %}"><i class="fa fa-pencil-square-o ">Edit</i></a></div>
+                    <div class="col-3"><a href="{% url 'delete_parent' parent.id %}"><i class="fa fa-trash ">Delete</i></a></div>
+                    {% endif %}
+                </div>
+                <br>
+            {% endfor %}
+    {% endif %}
+</div>   
+{% endblock %}
+

@@ -1,0 +1,24 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+home
+{% endblock %}
+    
+{% block content %}
+    <h3>Home page</h3>
+    
+    {% if user.is_authenticated %} 
+      
+
+        {% for res in results %}
+            {% if user.email == res.email %}        
+            <p><a href="{% url 'res_detail' res.id %}">{{res.stud_name.full_name | lower}} ------  &nbsp;&nbsp; Posted on  {{res.date_posted}}</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'download_pdf' res.id %}">Download</a></p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  edit
+{% endblock %}
+    
+{% block content %}
+    <form  method="post">
+        <h4>Edit Parent</h4>
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-info btn-sm" value="Edit Parent">&nbsp;&nbsp;<a href="{% url 'parent_list' %}"  class="btn btn-warning btn-sm">Go back to Parent list</a>
+    </form>
+
+{% endblock %}
+

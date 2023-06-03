@@ -1,0 +1,80 @@
+
+     {% extends 'base.html' %}
+      
+        {% block title %}
+        details
+        {% endblock %}
+
+        {% block content %}
+
+        
+         <div class="card-header mt-4 bg-info text-light text-center"> <b>JINA LA MWANAFUNZI :</b>&nbsp; {{result.stud_name.full_name}} &nbsp;  DARASA : &nbsp; {{result.stud_name.class_level.name}}</div>
+         <table class="table table-sm table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>SUBJECT NAME</th>
+                    <th>MARKS</th>
+                    <th>GRADES</th>
+                    <th>REMARKS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ARITHMETIC</td>
+                    <td>{{result.arithmetic}}</td>
+                    <td>{{result.arithmetic_grade}}</td>
+                    <td>{{result.arithmetic_grade_comment}}</td>
+                </tr>
+                <tr>
+                    <td>ENGLISH LANGUAGE</td>
+                    <td>{{result.e_language}}</td>
+                    <td>{{result.e_language_grade}}</td>
+                    <td>{{result.e_language_grade_comment}}</td>
+                </tr>
+                <tr>
+                    <td>KISWAHILI </td>
+                    <td>{{result.kiswahili}}</td>
+                    <td>{{result.kiswahili_grade}}</td>
+                    <td>{{result.kiswahili_grade_comment}}</td>
+                </tr>
+                <tr>
+                    <td>PRE-SCIENCE </td>
+                    <td>{{result.pre_science}}</td>
+                    <td>{{result.pre_science_grade}}</td>
+                    <td>{{result.pre_science_grade_comment}}</td>
+                </tr>
+                <tr>
+                    <td>WRITTING </td>
+                    <td>{{result.writing}}</td>
+                    <td>{{result.writing_grade}}</td>
+                    <td>{{result.writing_grade_comment}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>TOTAL MARKS : {{result.total}}</td>
+                    <td>AVERAGE : {{result.average}}</td>
+                    <td class="tr tr-dark">GRADE: {{result.grade}}</td>
+                </tr>
+            </tbody>
+         </table>
+         {% if user.is_superuser %}
+            <a href="{% url 'admin_result' %}">Go To Result list</a>
+         {% endif %}
+
+
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+         
+       
+
+
+<

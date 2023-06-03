@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+      
+{% block title %}
+details
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <hr>
+    <div class="row">
+        <div class="col-4"><b>PARENT NAME</b></div>
+        <div class="col-4"><b>{{fee.parent.full_name}}</b></div>
+    </div>
+    <div class="row">
+        <div class="col-4"><b>STUDENT NAME</b></div>
+        <div class="col-4"><b>{{fee.stud_name.full_name}}</b></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-4">REQUIRED AMOUNT</div>
+        <div class="col-4">{{fee.required_amount}}</div>
+    </div>
+    <div class="row">
+        <div class="col-4">PAID AMOUNT</div>
+        <div class="col-4">{{fee.amount_paid}}</div>
+    </div>
+    <div class="row">
+        <div class="col-4">MONTH PAID</div>
+        <div class="col-4">{{fee.month_paid}}</div>
+    </div><hr>
+    <div class="row">
+        <div class="col-4">DEBT</div>
+        <div class="col-4">{{fee.debt}}</div>
+    </div>
+    <hr>
+</div>
+
+
+ {% if user.is_superuser %}
+    <a href="{% url 'fee_list' %}">Go To Fee list</a>
+ {% endif %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+<

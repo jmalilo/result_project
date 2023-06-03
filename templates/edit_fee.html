@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  edit fees
+{% endblock %}
+    
+{% block content %}
+    <form  method="post">
+      <h4>Edit School Fees</h4>
+
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-info btn-sm" value="Update Fee">
+    </form>
+
+{% endblock %}
+

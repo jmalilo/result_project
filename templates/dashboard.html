@@ -1,0 +1,94 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+   dashboard
+{% endblock %}
+    
+{% block content %}
+<h1><center>Admin page</center></h1>
+<div class="container">
+    <div class="row">
+        
+        <div class="col-6 ">
+            <a href="{% url 'student_list' %}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center pt-2">
+                            <div class="col-12"><img src="/media/students2.jpg" width="80" height="80" alt=""></div>
+                            <div class="col-12"><h6>STUDENTS</h6></div>
+                            <div class="col-12"><h6>{{students.count}}</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-6">
+            <a href="">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-12"><img src="/media/classes2.jpg" width="80" height="80" alt=""></div>
+                            <div class="col-12"><h6>CLASSES</h6></div>
+                            <div class="col-12"><h6>{{levels.count}}</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <a href="{% url 'parent_list' %}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-12"><img src="/media/parents2.jpg" width="80" height="80" alt=""></div>
+                            <div class="col-12"><h6>PARENTS</h6></div>
+                            <div class="col-12"><h6>{{users.count}}</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6">
+            <a href="{% url 'fee_list' %}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-12"><img src="/media/fees2.jpg" width="80" height="80" alt=""></div>
+                            <div class="col-12"><h6>FEES</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <a href="{% url 'admin_result' %}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-12"><img src="/media/result2.jpg" width="80" height="80" alt=""></div>
+                            <div class="col-12"><h6>RESULTS</h6></div>
+                            <div class="col-12"><h6>{{num_results}}</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>  
+    </div>
+</div>
+
+
+
+    
+  
+    
+
+{% endblock %}
+

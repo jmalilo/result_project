@@ -1,0 +1,76 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+   Fee list
+{% endblock %}
+    
+{% block content %}
+<div class="container">
+        <div class="row mt-2">
+            <div class="col-3">
+                <a href="{% url 'add_fee' %}" class="btn btn-success">Add Fee</a>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="form form-inline"  method="get">
+                            <input type="text" name="search" placeholder="search month or name....." class="form-control"><button class="btn btn-info" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+
+    {% if search %}
+            <div class="row">
+                <div class="col-12">{{fei.count}} &nbsp;&nbsp; Results</div>
+            </div>
+             <div class="row">
+                <div class="col-3">NAME</div>
+                <div class="col-3">MONTH</div>
+                <div class="col-1">AMOUNT</div>
+                <div class="col-3 text-right">DEBT</div>
+                <div class="col-2 ">EDIT</div>
+                
+             </div>
+            {% for fee in fei %}
+                <div class="row p-3 mt-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                    <div class="col-3"><a href="">{{fee.stud_name.full_name}}</a></div>
+                    <div class="col-3">{{fee.month_paid}}</div>
+                    <div class="col-1">{{fee.amount_paid}}</div>
+                    <div class="col-3 text text-right">{{fee.debt}}</div>
+                    <div class="col-2"><a href="{% url 'edit_fee' fee.id %}">EDIT</a></div>
+                   
+                </div>
+                <br>
+            {% endfor %}
+    {% else %}
+            
+            <div class="row mt-3">
+                <div class="col-3">NAME</div>
+                <div class="col-3">MONTH</div>
+                <div class="col-1">AMOUNT</div>
+                <div class="col-3 text-right">DEBT</div>
+                <div class="col-2">EDIT</div>
+                
+            </div>
+            {% for fee in fees %}
+            <div class="row p-3 mt-1" style="background-color: aqua;border: 1px solid blueviolet; border-radius: 8px;"> 
+                <div class="col-3"><a href="{% url 'fee_detail' fee.id %}">{{fee.stud_name.full_name}}</a></div>
+                <div class="col-3">{{fee.month_paid}}</div>
+                <div class="col-1">{{fee.amount_paid}}</div>
+                <div class="col-3 text-right">{{fee.debt}}</div>
+                <div class="col-2"><a href="{% url 'edit_fee' fee.id %}">EDIT</a></div>
+               
+            </div>
+            <br>
+            {% endfor %}
+    {% endif %}
+</div>   
+{% endblock %}
+
